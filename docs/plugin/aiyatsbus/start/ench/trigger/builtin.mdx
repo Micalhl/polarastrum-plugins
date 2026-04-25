@@ -1,0 +1,36 @@
+---
+sidebar_position: 2
+---
+
+# 内建
+
+这部分内容涉及附魔的内建触发器相关配置。
+
+:::tip
+
+例如你想使用 Java、Kotlin、Scala 等语言写附魔的效果代码，就可以使用此类触发器。
+
+:::
+
+## 配置方式
+
+在附魔的配置文件中按如下方式填写：
+
+```yaml
+mechanisms:
+  builtin: "me.xiaozhangup.aiyatsbus.module.ingame.enchantments.CubicEnchantment"
+```
+
+附魔注册时，将自动寻找并绑定全限定名称对应的类。要求该类必须继承 Builtin 类，例如：
+
+```java
+public class CubicEnchantment extends Builtin {
+
+    @Override
+    public void blockBreak(int level, BlockBreakEvent event) {
+        event.getPlayer().sendMessage("你挖方块了");
+    }
+}
+```
+
+
