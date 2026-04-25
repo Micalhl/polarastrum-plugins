@@ -10,14 +10,15 @@ sidebar_position: 4
 alternative:
   grindstoneable: true
   weight: 100
-  is_cursed: false
-  is_treasure: false
-  is_tradeable: true
-  is_discoverable: true
-  is_vanilla: false
-  trade_max_level: -1
-  enchant_max_level: -1
-  loot_max_level: -1
+  is-cursed: false
+  is-treasure: false
+  is-tradeable: true
+  is-discoverable: true
+  is-vanilla: false
+  trade-max-level: -1
+  enchant-max-level: -1
+  loot-max-level: -1
+  inaccessible: false
 ```
 
 ## 节点介绍
@@ -26,14 +27,14 @@ alternative:
 |-----------------|----------------------------|
 | `grindstoneable`        | 是否可被砂轮驱魔，默认为 `true`                   |
 | `weight`| 附魔获取权重，默认为 `100`           |
-| `is_cursed`            | 是否为诅咒附魔，默认为 `false` |
-| `is_treasure`          | 是否为宝藏附魔，默认为 `false`                    |
-| `is_tradeable`     | 是否可从交易中得到，默认为 `true`                |
-| `is_discoverable`  | 是否可被发现，默认为 `true` |
-| `is_vanilla`  | 是否为原版附魔，默认为 `false` |
-| `trade_max_level`  | 交易获得附魔的等级上限, `-1` 则为该附魔最大等级 |
-| `enchant_max_level`  | 从附魔台获得附魔的等级上限, `-1` 则为该附魔最大等级 |
-| `loot_max_level`  | 从战利品获得附魔的等级上限, `-1` 则为该附魔最大等级 |
+| `is-cursed`            | 是否为诅咒附魔，默认为 `false` |
+| `is-treasure`          | 是否为宝藏附魔，默认为 `false`                    |
+| `is-tradeable`     | 是否可从交易中得到，默认为 `true`                |
+| `is-discoverable`  | 是否可被发现，默认为 `true` |
+| `is-vanilla`  | 是否为原版附魔，默认为 `false` |
+| `trade-max-level`  | 交易获得附魔的等级上限, `-1` 则为该附魔最大等级 |
+| `enchant-max-level`  | 从附魔台获得附魔的等级上限, `-1` 则为该附魔最大等级 |
+| `loot-max-level`  | 从战利品获得附魔的等级上限, `-1` 则为该附魔最大等级 |
 | `inaccessible` | 是否不可以从任何渠道获得 |
 
 :::tip
@@ -49,13 +50,13 @@ alternative:
 该部分涉及到如下配置：
 
 - grindstoneable
-- is_cursed
+- is-cursed
 
 请注意这两个配置项 **没有依赖关系**，将附魔配置为诅咒附魔 **不代表** 附魔就不能被砂轮驱除，需要单独配置。
 
 :::tip
 
-`is_cursed` 与之前介绍的品质配置也并无关系，附魔为诅咒配置 **不代表** 附魔为诅咒附魔，需要单独配置此项。
+`is-cursed` 与之前介绍的品质配置也并无关系，附魔为诅咒配置 **不代表** 附魔为诅咒附魔，需要单独配置此项。
 
 :::
 
@@ -63,7 +64,7 @@ alternative:
 
 该部分涉及到如下配置：
 
-- is_tradeable
+- is-tradeable
 
 请注意将此项设置为开启时 **不代表** 附魔一定出现在村民交易项中，需要确保 **附魔组** 配置中的 **可交易附魔组** 包含此附魔才可以。
 
@@ -79,16 +80,16 @@ alternative:
 
 该部分涉及到如下配置：
 
-- is_treasure
-- is_discoverable
+- is-treasure
+- is-discoverable
 
-#### is_treasure
+#### is-treasure
 
 该配置决定附魔是否可从附魔台中获取，类似于 EcoEnchants 中的 `enchantable`，但配置方式与其相反。
 
 如果该项配置为 `true`，则说明此附魔为宝藏附魔，无法从附魔台中获取，反之则可以获取。
 
-#### is_discoverable
+#### is-discoverable
 
 该配置决定附魔是否可从战利品中获取，类似于 EcoEnchants 中的 `discoverable`。
 
@@ -100,9 +101,9 @@ alternative:
 
 该部分涉及到如下配置：
 
-- trade_max_level
-- enchant_max_level
-- loot_max_level
+- trade-max-level
+- enchant-max-level
+- loot-max-level
 
 在交易、附魔台、战利品这三个附魔获取途径的功能模块配置中，定义了全局附魔最大等级配置。
 
@@ -114,7 +115,7 @@ alternative:
 - 此途径对应功能模块配置中定义的全局附魔最大等级配置
 - 附魔最大等级
 
-例如有一锋利附魔，现尝试从附魔台中获取。该附魔可选配置中定义了附魔台能获取到的最大等级（`enchant_max_level`）为 `4`，附魔台功能模块配置中定义的全局最大等级为 `3`，该附魔最大等级为 `5`，则获取到的附魔等级区间为 `[1, 4]`。
+例如有一锋利附魔，现尝试从附魔台中获取。该附魔可选配置中定义了附魔台能获取到的最大等级（`enchant-max-level`）为 `4`，附魔台功能模块配置中定义的全局最大等级为 `3`，该附魔最大等级为 `5`，则获取到的附魔等级区间为 `[1, 4]`。
 
 :::tip
 
@@ -126,7 +127,7 @@ alternative:
 
 该部分涉及到如下配置：
 
-- is_vanilla
+- is-vanilla
 
 通过此节点来辨别该附魔是否为原版附魔，插件不会注册原版附魔的自定义附魔触发器。
 
