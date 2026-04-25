@@ -26,6 +26,10 @@ mechanisms:
 ```java
 public class CubicEnchantment extends Builtin {
 
+    public CubicEnchantment(AiyatsbusEnchantment enchant) {
+        super(enchant);
+    }
+
     @Override
     public void blockBreak(int level, BlockBreakEvent event) {
         event.getPlayer().sendMessage("你挖方块了");
