@@ -1,0 +1,49 @@
+---
+sidebar_position: 1
+---
+
+# 触发器
+
+这部分内容涉及附魔的触发器配置，示例如下：
+
+```yaml
+mechanisms:
+  listeners:
+    on-damage:
+      listen: "entity-damage-other"
+      handle: |-
+        total = int(variables::modifiable(&enchant, &item, "当前累计"))
+        damage = &event::damage()
+
+        if &total >= &击杀累计 then {
+            variables::setModifiable(&enchant, &item, "当前累计", 0)
+            variables::setModifiable(&enchant, &item, "是否充能完毕", "充能中")
+            &event::setDamage(&damage * (1.0 + &伤害增加百分比 / 100.0))
+        }
+
+        total = int(variables::modifiable(&enchant, &item, "当前累计"))
+
+    on-kill:
+      listen: "entity-death"
+      handle: |-
+        total = int(variables::modifiable(&enchant, &item, "当前累计"))
+        variables::setModifiable(&enchant, &item, "当前累计", min(&total + 1, &击杀累计))
+
+        total = int(variables::modifiable(&enchant, &item, "当前累计"))
+        if &total >= &击杀累计 then {
+            variables::setModifiable(&enchant, &item, "是否充能完毕", "充能完毕")
+        }
+```
+
+## 节点介绍
+
+附魔的触发器总共分为四种类型。
+
+| 中文名  |  英文名           | 描述                       |
+|-----------------|-----------|-----------------|
+| 内建 | `Builtin`        | 用代码编写附魔触发效果的方式                   |
+| 事件 | `EventExecutor`            | 基于事件监听使用脚本编写附魔触发效果的方式 |
+| 技能 | `Skill`          | 针对技能类附魔使用脚本编写触发效果的方式                    |
+| 调度 | `Ticker`          | 基于调度器使用脚本编写附魔触发效果的方式                    |
+
+详见子页面。
