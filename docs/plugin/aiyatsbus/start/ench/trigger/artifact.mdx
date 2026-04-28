@@ -1,0 +1,74 @@
+---
+sidebar_position: 3
+---
+
+# 粒子
+
+这部分内容涉及附魔的粒子特效触发器相关配置。
+
+:::tip
+
+例如你想卖在攻击、挖矿时或者实时播放粒子效果的特效附魔，就可以使用此类触发器。
+
+:::
+
+## 配置方式
+
+在附魔的配置文件中按如下方式填写：
+
+```yaml
+mechanisms:
+  artifact:
+    particle: ANGER_VILLAGER
+    # 数量
+    amount: 1
+```
+
+这样就形成了一个最简单的粒子附魔，在挖矿或攻击时就可以生效，下面对所有配置项作详细介绍。
+
+## 专精附魔
+
+```yaml
+mechanisms:
+  artifact:
+    particle: ANGER_VILLAGER
+    # 数量
+    amount: 1
+    # 专精附魔
+    specialized: true
+```
+
+如果这个粒子附魔为专精粒子附魔，那么在装备后，每秒都会在玩家身上播放一遍粒子效果。
+
+否则，就只有在攻击或挖矿时产生粒子效果。
+
+## 方块外观渲染属性
+
+```yaml
+mechanisms:
+  artifact:
+    particle: BLOCK_MARKER
+    # 数量
+    amount: 1
+    # 方块外观渲染属性
+    options:
+      type: LIGHT # 光芒粒子
+```
+
+例如奔跑的石头碎屑，爆炸的方块碎屑等，指定对应方块就需要配置这个。
+
+## 灰尘粒子渲染属性
+
+```yaml
+mechanisms:
+  artifact:
+    particle: DUST
+    # 数量
+    amount: 1
+    # 灰尘粒子渲染属性
+    options:
+      red: 3
+      green: 252
+      blue: 140
+      size: 1.0
+```
